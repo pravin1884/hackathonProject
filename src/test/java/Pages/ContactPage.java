@@ -1,43 +1,24 @@
 package Pages;
 
-import Utilities.BaseClass;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.PageFactory;
 
 public class ContactPage extends BaseClass {
-       public WebDriver driver;
-
-        public WebDriverWait wait;
-
-
-        @FindBy(id="login2")
-        WebElement menuLogin;
-
-
-        @FindBy(id="loginusername")
-        WebElement loginUserName;
-
-        @FindBy(id="loginpassword")
-        WebElement loginUserPassword;
-
-        @FindBy(xpath="//button[text()='Log in']")
-        WebElement btnLogin;
-
-        //public Contact Page(driver)
-        {
-//copy your code here;
-
-        }
-
-
-        public void sendcontactMessage(String username, String password)
-        {
-
-            loginUserName.sendKeys(username);
-            loginUserPassword.sendKeys(password);
-            btnLogin.click();
-        }
-
+    public ContactPage() {
+        PageFactory.initElements(driver, this);
     }
+
+    @FindBy(xpath = "//input[@id='recipient-email']")
+    public WebElement contactEmailField;
+
+    @FindBy(xpath = "//input[@id='recipient-name']")
+    public WebElement contactNameField;
+
+    @FindBy(xpath = "//*[@id='message-text']")
+    public WebElement MessageField;
+
+
+
+
+}
