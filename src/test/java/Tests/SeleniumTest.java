@@ -1,20 +1,19 @@
 package Tests;
 
-import com.epam.healenium.SelfHealingDriver;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.BeforeTest;
+import Pages.HomePage;
+import Pages.NewMessagePopUpPage;
+import Utilities.BaseClass;
+import org.testng.annotations.Test;
 
-public class SeleniumTest {
-    public static WebDriver driver;
-    @BeforeTest
-    public static void setUp(){
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        WebDriver delegate = new ChromeDriver(options);
-        SelfHealingDriver driver = SelfHealingDriver.create((WebDriver) delegate);
-        driver.get("https://www.google.com");
+public class SeleniumTest extends BaseClass {
+    HomePage home = new HomePage();
+    NewMessagePopUpPage message = new NewMessagePopUpPage();
+    @Test
+    void testSteps() throws InterruptedException {
+        Thread.sleep(2000);
+        home.clickOnContact();
+        //message.enterText(message.contactEmailField,"pravind245@gmail.com");
+        //message.enterText(message.contactNameField,"pravin");
+        //message.enterText(message.MessageField,"hi");
     }
 }
